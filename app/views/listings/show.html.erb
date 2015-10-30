@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @listing.floor %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @listing.unit %>
+</p>
+
+<p>
+  <strong>Sqft:</strong>
+  <%= @listing.sqft %>
+</p>
+
+<p>
+  <strong>Bath:</strong>
+  <%= @listing.bath %>
+</p>
+
+<p>
+  <strong>Bed:</strong>
+  <%= @listing.bed %>
+</p>
+
+<%= link_to 'History', listing_rents_path(@listing) %> |
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

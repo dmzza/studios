@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Listing:</strong>
+  <%= @rent.listing_id %>
+</p>
+
+<p>
+  <strong>Fetch date:</strong>
+  <%= @rent.fetch_date %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @rent.price %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>
