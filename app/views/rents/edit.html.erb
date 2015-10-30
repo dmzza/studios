@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @rent %> |
-<%= link_to 'Back', rents_path %>
+<%= link_to 'Show', [@listing, @rent] %> |
+<%= link_to 'Back', listing_rents_path(@listing) %>

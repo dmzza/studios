@@ -15,5 +15,5 @@
   <%= @rent.price %>
 </p>
 
-<%= link_to 'Edit', edit_rent_path(@rent) %> |
-<%= link_to 'Back', rents_path %>
+<%= link_to 'Edit', edit_listing_rent_path(@listing, @rent) %> |
+<%= link_to 'Back', listing_rents_path(@listing) %>

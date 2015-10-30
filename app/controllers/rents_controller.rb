@@ -1,6 +1,6 @@
 class RentsController < ApplicationController
   before_action :set_rent, only: [:show, :edit, :update, :destroy]
-  before_action :set_listing, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   # GET /rents
   # GET /rents.json
@@ -29,7 +29,7 @@ class RentsController < ApplicationController
 
     respond_to do |format|
       if @rent.save
-        format.html { redirect_to @rent, notice: 'Rent was successfully created.' }
+        format.html { redirect_to [@listing, @rent], notice: 'Rent was successfully created.' }
         format.json { render action: 'show', status: :created, location: @rent }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class RentsController < ApplicationController
   def update
     respond_to do |format|
       if @rent.update(rent_params)
-        format.html { redirect_to @rent, notice: 'Rent was successfully updated.' }
+        format.html { redirect_to [@listing, @rent], notice: 'Rent was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +57,7 @@ class RentsController < ApplicationController
   def destroy
     @rent.destroy
     respond_to do |format|
-      format.html { redirect_to rents_url }
+      format.html { redirect_to listing_rents_url(@listing) }
       format.json { head :no_content }
     end
   end
