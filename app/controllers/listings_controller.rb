@@ -1,3 +1,6 @@
+require 'net/https'
+require 'json'
+
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
@@ -58,6 +61,30 @@ class ListingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to listings_url }
       format.json { head :no_content }
+    end
+  end
+
+  def pull
+    # ripped from http://mislav.net/2011/07/faraday-advanced-http/
+    url = URI.parse('http://rentnema.com/soap-api-4.php?type=0')
+
+    response = Net::HTTP.start(url.host, use_ssl: false) do |http|
+      http.get url.request_uri, 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
+    end
+
+    case response
+    when Net::HTTPRedirection
+      # repeat the request using response['Location']
+    when Net::HTTPSuccess
+      listings_json = JSON.parse response.body
+      @units = listings_json['units']
+      respond_to do |format|
+        format.html { redirect_to listings_url }
+        format.json { listings_json }
+      end
+    else
+      # response code isn't a 200; raise an exception
+      response.error!
     end
   end
 

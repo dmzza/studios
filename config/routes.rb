@@ -1,7 +1,8 @@
 Studios::Application.routes.draw do
 
-
+  get "listings/pull"
   resources :listings do
+
     resources :rents
   end
 
