@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.sort_by { |listing| listing.value_score }
   end
 
   # GET /listings/1

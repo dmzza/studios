@@ -21,7 +21,7 @@
     <% @listings.each do |listing| %>
       <tr>
         <!-- <td><%= listing.id %></td> -->
-        <td><%= link_to "$#{listing.rents.last.price}", listing_rents_path(listing) %></td>
+        <td><%= link_to "$#{listing.latest_price}", listing_rents_path(listing) %></td>
         <td><%= "#{listing.floor}#{listing.unit}" %></td>
         <td><%= listing.sqft %></td>
         <!-- <td><%= listing.bath %></td> -->
