@@ -79,7 +79,7 @@ class ListingsController < ApplicationController
       listings_json = JSON.parse response.body
       @units = listings_json['units']
       respond_to do |format|
-        format.html { redirect_to listings_url }
+        format.html { redirect_to listings_url, notice: 'Listings pulled successfully.' }
         format.json { listings_json }
       end
     else
