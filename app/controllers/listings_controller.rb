@@ -77,11 +77,20 @@ class ListingsController < ApplicationController
       # repeat the request using response['Location']
     when Net::HTTPSuccess
       listings_json = JSON.parse response.body
+      fetch_date = Time.current
       @units = listings_json['units']
       @units.each do |unit|
         unless Listing.where(floor: unit['uf'], unit: unit['un']).count == 1
           listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
           listing.save
+        end
+        listing = Listing.where(floor: unit['uf'], unit: unit['un']).first
+        current_price = unit['rent'].delete(',').to_i
+        history = listing.rents
+        last_rent = history.last
+        unless history.count > 0 && last_rent[:price] == current_price
+          rent = Rent.new(listing_id: listing.id, fetch_date: fetch_date, price: current_price)
+          rent.save
         end
       end
       respond_to do |format|
