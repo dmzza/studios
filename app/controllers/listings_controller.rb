@@ -78,6 +78,12 @@ class ListingsController < ApplicationController
     when Net::HTTPSuccess
       listings_json = JSON.parse response.body
       @units = listings_json['units']
+      @units.each do |unit|
+        unless Listing.where(floor: unit['uf'], unit: unit['un']).count == 1
+          listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
+          listing.save
+        end
+      end
       respond_to do |format|
         format.html { redirect_to listings_url, notice: 'Listings pulled successfully.' }
         format.json { listings_json }
