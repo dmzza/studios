@@ -1,0 +1,1 @@
+{"klass":"Taps::Pull","database_url":"postgres://localhost/studios_development","remote_url":"http://dmzza:pass123@localhost:5000","session_uri":"/sessions/2123425422","stream_state":{},"completed_tables":[],"table_filter":null,"remote_tables_info":{"schema_migrations":200,"listings":200,"rents":200}}

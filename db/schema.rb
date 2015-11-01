@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20151030050339) do
 
-  create_table "listings", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "listings", force: :cascade do |t|
     t.integer  "floor"
     t.string   "unit"
     t.integer  "sqft"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151030050339) do
     t.datetime "updated_at"
   end
 
-  create_table "rents", force: true do |t|
+  create_table "rents", force: :cascade do |t|
     t.integer  "listing_id"
     t.datetime "fetch_date"
     t.integer  "price"
