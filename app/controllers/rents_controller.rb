@@ -5,7 +5,7 @@ class RentsController < ApplicationController
   # GET /rents
   # GET /rents.json
   def index
-    @rents = @listing.rents.sort_by { |rent| rent.fetch_date }
+    @rents = @listing.rents
   end
 
   # GET /rents/1

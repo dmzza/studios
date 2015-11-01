@@ -1,4 +1,4 @@
 class Rent < ActiveRecord::Base
-  # attr_accessible :listing
   belongs_to :listing
+  default_scope { order('fetch_date ASC') }
 end
