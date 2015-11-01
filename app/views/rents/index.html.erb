@@ -18,9 +18,9 @@
         <td><%= link_to "#{@listing.floor}#{@listing.unit}", @listing %></td>
         <td><%= time_ago_in_words(rent.fetch_date) %></td>
         <td>$<%= rent.price %></td>
-        <td><%= link_to 'Show', listing_rent_path(rent.listing_id, rent) %></td>
+        <!-- <td><%= link_to 'Show', listing_rent_path(rent.listing_id, rent) %></td>
         <td><%= link_to 'Edit', edit_listing_rent_path(rent.listing_id, rent) %></td>
-        <td><%= link_to 'Destroy', [@listing, rent], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [@listing, rent], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
