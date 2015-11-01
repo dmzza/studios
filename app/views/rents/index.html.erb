@@ -1,5 +1,27 @@
 <h1>Rent History</h1>
 
+<script type="text/javascript">
+data = {
+  labels: [""<% @rents.each do |rent| %>, "<%= time_ago_in_words(rent.fetch_date) %>"<% end %>],
+  datasets: [
+      {
+          label: "Rent History",
+          fillColor: "rgba(220,220,220,0.2)",
+          strokeColor: "rgba(220,220,220,1)",
+          pointColor: "rgba(220,220,220,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [<%= @rents[0].price %><% @rents.each do |rent| %>, <%= rent.price %> <% end %>]
+      }
+    ]
+  }
+
+
+</script>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+
 <table>
   <thead>
     <tr>
