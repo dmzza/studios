@@ -80,9 +80,8 @@ $ ->
   }
   # Get context with jQuery - using jQuery's .get() method.
   chart = $("#myChart")
-  ctx = chart[0].getContext("2d")
   # This will get the first returned node in the jQuery collection.
-  myNewChart = new Chart(ctx, {
+  myNewChart = new Chart(chart, {
     type: 'line',
     data: data,
     options: options
