@@ -1,4 +1,4 @@
-<h1>Rent History</h1>
+
 
 <script type="text/javascript">
 data = {
@@ -19,9 +19,10 @@ data = {
 
 
 </script>
+<center>
+<canvas id="myChart" width="400" height="400" style="width:100%; max-width:620px;"></canvas>
 
-<canvas id="myChart" width="400" height="400"></canvas>
-
+<h1>Rent History</h1>
 <table>
   <thead>
     <tr>
@@ -51,3 +52,4 @@ data = {
 <br>
 
 <%= link_to 'New Rent', new_listing_rent_path(@listing) %>
+</center>
