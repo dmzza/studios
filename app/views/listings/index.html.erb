@@ -21,7 +21,7 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <tr>
+      <tr class="<% if !listing.is_active %>inactive<% end %>">
         <!-- <td><%= listing.id %></td> -->
         <td><%= link_to "$#{listing.latest_price}", listing_rents_path(listing) %></td>
         <td><%= "#{listing.floor}#{listing.unit}" %></td>

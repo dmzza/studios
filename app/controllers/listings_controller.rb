@@ -78,13 +78,21 @@ class ListingsController < ApplicationController
     when Net::HTTPSuccess
       listings_json = JSON.parse response.body
       fetch_date = Time.current
+      Listing.all.each do |listing|
+        listing.is_active = false
+        listing.save
+      end
       @units = listings_json['units']
       @units.each do |unit|
-        unless Listing.where(floor: unit['uf'], unit: unit['un']).count == 1
-          listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
+        listing = Listing.where(floor: unit['uf'], unit: unit['un'])
+        unless listing.count > 0
+          listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0, is_active: true) # TODO: 0 for now, use real number
+          listing.save
+        else
+          listing = listing.first
+          listing.is_active = true
           listing.save
         end
-        listing = Listing.where(floor: unit['uf'], unit: unit['un']).first
         current_price = unit['rent'].delete(',').to_i
         history = listing.rents
         last_rent = history.last
