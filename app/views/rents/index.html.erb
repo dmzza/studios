@@ -24,7 +24,6 @@
 <table>
   <thead>
     <tr>
-      <th>Listing</th>
       <th>Fetch date</th>
       <th>Price</th>
       <th></th>
@@ -36,7 +35,7 @@
   <tbody>
     <% @rents.each do |rent| %>
       <tr>
-        <td><%= link_to "#{@listing.floor}#{@listing.unit}", @listing %></td>
+
         <td><%= time_ago_in_words(rent.fetch_date) %></td>
         <td>$<%= rent.price %></td>
         <!-- <td><%= link_to 'Show', listing_rent_path(rent.listing_id, rent) %></td>
@@ -46,6 +45,13 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+<h3><%= link_to "#{@listing.floor}#{@listing.unit}", @listing %></h3>
+<span style="font-size:24pt;">
+  <% if @listing.left_window %>🖼<% else %>—<% end %><% if @listing.middle_window %>🖼<% else %>—<% end %><% if @listing.right_window %>🖼<% else %>—<% end %>
+</span>
+</div>
 
 <br>
 
