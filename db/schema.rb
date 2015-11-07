@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102060742) do
+ActiveRecord::Schema.define(version: 20151107054011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "listings", force: :cascade do |t|
     t.integer  "floor"
-    t.string   "unit",       limit: 255
+    t.string   "unit"
     t.integer  "sqft"
     t.integer  "bath"
     t.integer  "bed"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_active"
+    t.boolean  "left_window"
+    t.boolean  "middle_window"
+    t.boolean  "right_window"
   end
 
   create_table "rents", force: :cascade do |t|
