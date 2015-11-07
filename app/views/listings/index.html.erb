@@ -9,6 +9,7 @@
       <th>Price</th>
       <th>Unit</th>
       <th>Sqft</th>
+      <th>Windows</th>
       <th>Updated</th>
       <!-- <th>Bath</th> -->
       <!-- <th>Bed</th> -->
@@ -26,6 +27,13 @@
         <td><%= link_to "$#{listing.latest_price}", listing_rents_path(listing) %></td>
         <td><%= "#{listing.floor}#{listing.unit}" %></td>
         <td><%= listing.sqft %></td>
+        <td>
+          <% if listing.left_window != nil %>
+            <% if listing.left_window %>🖼<% else %>—<% end %>
+            <% if listing.middle_window %>🖼<% else %>—<% end %>
+            <% if listing.right_window %>🖼<% else %>—<% end %>
+          <% end %>
+        </td>
         <td><%= time_ago_in_words(listing.rents.last.fetch_date) %></td>
         <!-- <td><%= listing.bath %></td> -->
         <!-- <td><%= listing.bed %></td> -->
