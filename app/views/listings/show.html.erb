@@ -25,6 +25,13 @@
   <%= @listing.bed %>
 </p>
 
+<p>
+  <strong>Windows:</strong><br><br>
+  <span style="font-size:24pt;">
+    <% if @listing.left_window %>🖼<% else %>—<% end %><% if @listing.middle_window %>🖼<% else %>—<% end %><% if @listing.right_window %>🖼<% else %>—<% end %>
+  </span>
+</p>
+
 <%= link_to 'History', listing_rents_path(@listing) %> |
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>

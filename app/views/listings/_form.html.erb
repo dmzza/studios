@@ -31,6 +31,20 @@
     <%= f.label :bed %><br>
     <%= f.number_field :bed %>
   </div>
+  <div class="field">
+    <%= f.label :is_active %><br>
+    <%= f.check_box :is_active %>
+  </div>
+  <div class="field">
+    <%= f.label "Windows" %><br>
+    <table>
+      <tr><th>L</th><th>M</th><th>R</th></tr>
+      <tr>
+        <td><%= f.check_box :left_window %></td>
+        <td><%= f.check_box :middle_window %></td>
+        <td><%= f.check_box :right_window %></td>
+      </tr>
+    </table>
   <div class="actions">
     <%= f.submit %>
   </div>
