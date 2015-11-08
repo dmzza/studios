@@ -20,6 +20,6 @@ class Listing < ActiveRecord::Base
   end
 
   def value_score
-    latest_price.to_f / (sqft.to_f + windows * 3)
+    latest_price.to_f / (sqft.to_f + windows * 7)
   end
 end
