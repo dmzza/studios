@@ -66,7 +66,7 @@ class ListingsController < ApplicationController
 
   def pull
     # ripped from http://mislav.net/2011/07/faraday-advanced-http/
-    url = URI.parse('http://rentnema.com/soap-api-4.php?type=0')
+    url = URI.parse('http://www.rentnema.com/soap-api-4.php?type=0')
 
     response = Net::HTTP.start(url.host, use_ssl: false) do |http|
       http.get url.request_uri, 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
