@@ -25,7 +25,11 @@
       <tr class="<% if !listing.is_active %>inactive<% end %>">
         <!-- <td><%= listing.id %></td> -->
         <td><%= link_to "$#{listing.latest_price}", listing_rents_path(listing) %></td>
-        <td><%= "#{listing.floor}#{listing.unit}" %></td>
+        <td>
+          <%= link_to listing.floorplan_image do %>
+            <%= "#{listing.floor}#{listing.unit}" %>
+          <% end %>
+        </td>
         <td><%= listing.sqft %></td>
         <td>
           <% if listing.left_window != nil %>

@@ -22,4 +22,8 @@ class Listing < ActiveRecord::Base
   def value_score
     latest_price.to_f / (sqft.to_f + windows * 7 + floor)
   end
+
+  def floorplan_image
+    "https://www.rentnema.com/img/floorplans/plan/#{floorplan}.jpg"
+  end
 end

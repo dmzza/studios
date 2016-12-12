@@ -86,11 +86,14 @@ class ListingsController < ApplicationController
       @units.each do |unit|
         listing = Listing.where(floor: unit['uf'], unit: unit['un'])
         unless listing.count > 0
-          listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0, is_active: true) # TODO: 0 for now, use real number
+          listing = Listing.new(floor: unit['uf'], unit: unit['un'], sqft: unit['sq'], floorplan: unit['fi'], bath: unit['bathType'], bed: 0, is_active: true) # TODO: 0 for now, use real number
           listing.save
         else
           listing = listing.first
           listing.is_active = true
+          unless listing.floorplan.present?
+            listing.floorplan = unit['fi']
+          end
           listing.save
         end
         current_price = unit['rent'].delete(',').to_i
