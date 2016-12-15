@@ -5,17 +5,11 @@
 <table>
   <thead>
     <tr>
-      <!-- <th>ID</th> -->
       <th>Price</th>
       <th>Unit</th>
       <th>Sqft</th>
       <th>Windows</th>
       <th>Updated</th>
-      <!-- <th>Bath</th> -->
-      <!-- <th>Bed</th> -->
-      <!-- <th></th>
-      <th></th>
-      <th></th> -->
       <th></th>
     </tr>
   </thead>
@@ -23,7 +17,6 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr class="<% if !listing.is_active %>inactive<% end %>">
-        <!-- <td><%= listing.id %></td> -->
         <td><%= link_to "$#{listing.latest_price}", listing_rents_path(listing) %></td>
         <td>
           <%= link_to listing.floorplan_image do %>
@@ -39,12 +32,7 @@
           <% end %>
         </td>
         <td><%= time_ago_in_words(listing.rents.last.fetch_date) %></td>
-        <!-- <td><%= listing.bath %></td> -->
-        <!-- <td><%= listing.bed %></td> -->
-        <!-- <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'History', listing_rents_path(listing) %></td>-->
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <!--<td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
