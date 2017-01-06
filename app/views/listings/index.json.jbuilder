@@ -1,3 +1,3 @@
 json.array!(@listings) do |listing|
-  json.extract! listing, :id, :is_active, :latest_price, :floor, :unit, :sqft, :bath, :bed, :left_window, :middle_window, :right_window, :floorplan_image, :last_updated
+  json.extract! listing, :id, :is_active, :latest_price, :floor, :unit, :sqft, :bath, :bed, :left_window, :middle_window, :right_window, :floorplan_image, :price_changed_at
 end

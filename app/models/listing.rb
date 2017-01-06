@@ -27,7 +27,7 @@ class Listing < ActiveRecord::Base
     "https://www.rentnema.com/img/floorplans/plan/#{floorplan}.jpg"
   end
 
-  def last_updated
+  def price_changed_at
     rents.last.fetch_date
   end
 end
