@@ -26,4 +26,8 @@ class Listing < ActiveRecord::Base
   def floorplan_image
     "https://www.rentnema.com/img/floorplans/plan/#{floorplan}.jpg"
   end
+
+  def last_updated
+    rents.last.fetch_date
+  end
 end
